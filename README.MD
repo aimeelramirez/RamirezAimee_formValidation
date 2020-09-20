@@ -1,10 +1,4 @@
-Download the "formValidation.zip" file attached to this assignment. You will NOT be editing the HTML or CSS, ONLY the JavaScript.
 
-Change the title of the h2 tag to CONTACT ME (or anything else you deem professional in nature and matching your chosen Theme).
-Hint: "<h2><strong>Contact</strong> Us</h2>" is the HTML containing the current heading.
-Change the background Image
-Hint: Currently this is the CSS rule that places a specific image on the background:  "body #222222 url('images/txture.png') repeat top left;"`
-Change the first paragraph to match your theme. Replace the <p> tag's content without adding a CLASS or ID to the tag itself. No Lorem Ipsum, use real content!
 Update the “placeholder” attributes to match your theme.
 Hint: First name, Last name, Phone Number, Address, Password, Number of cupcakes? etc.
 Disable the submit button:
