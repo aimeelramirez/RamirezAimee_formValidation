@@ -283,12 +283,11 @@ window.onload = () => {
       createButtonSwitch.style.transition = "2s";
     };
     if (boolMode == false) {
-      console.log(boolMode);
+      //console.log(boolMode);
       darkImage();
       //alert("click on browser on dark mode not on mobile");
     } else {
-      console.log(boolMode);
-
+     // console.log(boolMode);
       lightImage();
       //alert("click on browser on light mode not on mobile");
     }
