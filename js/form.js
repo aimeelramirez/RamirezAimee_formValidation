@@ -31,10 +31,10 @@ window.onload = () => {
   message.placeholder = "required for messages longer than 10 characters.";
   /* END ids on input and textarea */
   // ---- For testing purposes ---- //
-  // name.value = "aimee";
-  // email.value = "test@gmail.com";
-  // phone.value = "+1(123)123-1234";
-  // message.value = "required for messages longer than 10 characters.";
+  name.value = "aimee";
+  email.value = "test@gmail.com";
+  phone.value = "+1(123)123-1234";
+  message.value = "required for messages longer than 10 characters.";
   // ---- For testing purposes ---- //
   // Extra to replace icon on class error on getting success checkmark//
   const include = (file) => {
@@ -57,10 +57,10 @@ window.onload = () => {
   //center buttons and text
   background.style.cssText = "text-align:center";
   //on html to match body
-  backgroundBody.style.backgroundImage = `url("css/images/debutlight.png")`;
+  backgroundBody.style.backgroundImage = `url("` + arrayImages[0] + `")`;
   backgroundBody.style.transition = "2s";
   //on html to match body
-  background.style.backgroundImage = `url("css/images/debutlight.png")`;
+  background.style.backgroundImage = `url("` + arrayImages[0] + `")`;
   background.style.transition = "2s";
 
   createButtonSwitch.innerHTML += `<i class="fas fa-moon"> </i><p>Switch to Dark Mode</p>`;
@@ -198,11 +198,11 @@ window.onload = () => {
             setTimeout(() => {
               /* START Change the background Image */
               let arrayImages = [
-                "images/lighthouse.jpg",
-                "images/trail.jpg",
-                "images/trees.jpg",
-                "images/waterfall.jpg",
-                "images/winter.jpg",
+                { imageSrc: "images/lighthouse.jpg", alt: "lighthouse over the bay during daytime." },
+                { imageSrc: "images/trail.jpg", alt: "a trail by a lake during autumn season in hilly pastures." },
+                { imageSrc: "images/trees.jpg", alt: "bunch of tall bald trees in an open field." },
+                { imageSrc: "images/waterfall.jpg", alt: "waterfalls by green pastures." },
+                { imageSrc: "images/winter.jpg", alt: "snow covered mountains in the winter." },
               ];
               //get images to background with transition
               let x = 0;
@@ -225,12 +225,13 @@ window.onload = () => {
               //get first image to set to get
               let getImgTransition = document.querySelector("div");
               getImgTransition.innerHTML =
-                ` <img id="images" src="` + arrayImages[0] + `"/><br/> Cheers!`;
+                ` <img id="images"><br/> Cheers!`;
 
               let getImage = () => {
                 //get a new screen
                 let getImg = document.getElementById("images");
-                getImg.src = arrayImages[x];
+                getImg.src = arrayImages[x].imageSrc;
+                getImg.alt = arrayImages[x].alt;
                 x++;
                 //fixing to make it readable
                 if (x >= arrayImages.length) {
