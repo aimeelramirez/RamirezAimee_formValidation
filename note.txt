@@ -1,6 +1,0 @@
-     "liveServer.settings.https": {
-            "enable": false, //set it true to enable the feature.
-            "cert": "C://Users/aimeelynnramirez/Desktop/formValidation/cert/server.cert", //full path
-            "key": "C://Users/aimeelynnramirez/Desktop/formValidation/cert/server.key", //full path
-            "passphrase": ""
-        },

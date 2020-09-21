@@ -18,9 +18,10 @@ https://alramirez1.github.io/RamirezAimee_formValidation/
 
 ## Video Presentation
 
-[![form validation project]()](https://youtu.be/jfZVQlElFLc)
+![form validation](images/screenshot-contactus.png)
+(https://www.youtube.com/watch?v=0bH8TQtmWOg)
 
-
+https://www.youtube.com/watch?v=0bH8TQtmWOg
 
 ## Remote Links
 

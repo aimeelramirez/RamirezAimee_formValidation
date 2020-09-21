@@ -19,7 +19,7 @@ window.onload = () => {
   let arrayImages = ["css/images/debutlight.png", "css/images/txture.png"];
   let getLightMode = (background.style.backgroundImage =
     `url("` + arrayImages[0] + `")`);
-
+ 
   // let getDarkMode = (background.style.backgroundImage =
   //   `url("` + arrayImages[1] + `")`);
 
@@ -49,26 +49,28 @@ window.onload = () => {
 
   /* START creating dark mode or light mode */
   let createButtonSwitch = document.createElement("a");
-  backgroundBody.insertAdjacentElement("beforeend", createButtonSwitch);
+  background.insertAdjacentElement("beforeend", createButtonSwitch);
   backgroundBody.style.backgroundImage = `url("` + arrayImages[0] + `")`;
   backgroundBody.style.transition = "2s";
   
   background.style.backgroundImage = `url("` + arrayImages[0] + `")`;
   background.style.transition = "2s";
+
   createButtonSwitch.innerHTML += `<i class="fas fa-moon"> </i><p>Switch to Dark Mode</p>`;
   //get light image on light mode
   createButtonSwitch.style.cssText =
-    "color:black; cursor:pointer; font-size:1.5rem;";
+    "cursor:pointer; font-size:1.5rem; color:black;";
 
   let lightImage = () => {
     backgroundBody.style.backgroundImage = `url("` + arrayImages[0] + `")`;
     backgroundBody.style.transition = "2s";
     background.style.backgroundImage = `url("` + arrayImages[0] + `")`;
     background.style.transition = "2s";
-    createButtonSwitch.innerHTML = `<i class="fas fa-moon"></i><p> Switch to Dark Mode</p>`;
+
+    createButtonSwitch.innerHTML = `<i class="fas fa-moon"></i><p>Switch to Dark Mode</p>`;
     createButtonSwitch.style.backgroundImage = `url("` + arrayImages[0] + `")`;
     createButtonSwitch.style.cssText =
-      "color:black; cursor:pointer; font-size:1.5rem;";
+      "cursor:pointer; font-size:1.5rem; color:black;";
   };
 
   //get dark image on dark mode
@@ -204,6 +206,7 @@ window.onload = () => {
         ) {
           /* START thank you screen not banner */
           banner.innerHTML = `<p class='error' style="color:green; border: 2px solid green;"><i class="fas fa-check-square" style="color:green;"></i> Success</p>`;
+
           //get file js if to get a new screen
           const newInclude = (file) => {
             let script = document.createElement("script");
