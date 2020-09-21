@@ -31,10 +31,10 @@ window.onload = () => {
   message.placeholder = "required for messages longer than 10 characters.";
   /* END ids on input and textarea */
   // ---- For testing purposes ---- //
-  name.value = "aimee";
-  email.value = "test@gmail.com";
-  phone.value = "+1(123)123-1234";
-  message.value = "required for messages longer than 10 characters.";
+  // name.value = "aimee";
+  // email.value = "test@gmail.com";
+  // phone.value = "+1(123)123-1234";
+  // message.value = "required for messages longer than 10 characters.";
   // ---- For testing purposes ---- //
   // Extra to replace icon on class error on getting success checkmark//
   const include = (file) => {
