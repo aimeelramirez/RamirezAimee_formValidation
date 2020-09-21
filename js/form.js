@@ -269,16 +269,18 @@ window.onload = () => {
       }
     });
   };
+  let getSwitch = () =>{
+     if (background.style.backgroundImage == getLightMode) {
+       darkImage();
+     } else {
+       lightImage();
+     }
+  }
   /* END submitForm */
-
+ 
   /* EVENTS first screen*/
   addEventListener("submit", submitForm);
-  createButtonSwitch.addEventListener("click", () => {
-    if (background.style.backgroundImage == getLightMode) {
-      darkImage();
-    } else {
-      lightImage();
-    }
-  });
+  createButtonSwitch.addEventListener("click", getSwitch);
+
   /* EVENTS first screen*/
 };
