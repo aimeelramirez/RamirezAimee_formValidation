@@ -19,7 +19,7 @@ window.onload = () => {
   let arrayImages = ["css/images/debutlight.png", "css/images/txture.png"];
   let getLightMode = (background.style.backgroundImage =
     `url("` + arrayImages[0] + `")`);
- 
+
   // let getDarkMode = (background.style.backgroundImage =
   //   `url("` + arrayImages[1] + `")`);
 
@@ -52,7 +52,7 @@ window.onload = () => {
   background.insertAdjacentElement("beforeend", createButtonSwitch);
   backgroundBody.style.backgroundImage = `url("` + arrayImages[0] + `")`;
   backgroundBody.style.transition = "2s";
-  
+
   background.style.backgroundImage = `url("` + arrayImages[0] + `")`;
   background.style.transition = "2s";
 
@@ -204,66 +204,72 @@ window.onload = () => {
           boolEmail == true &&
           boolName == true
         ) {
-          /* START thank you screen not banner */
           banner.innerHTML = `<p class='error' style="color:green; border: 2px solid green;"><i class="fas fa-check-square" style="color:green;"></i> Success</p>`;
 
-          //get file js if to get a new screen
-          const newInclude = (file) => {
-            let script = document.createElement("script");
-            script.src = file;
-            script.defer = true;
-            newGetScript(script);
-          };
-          const newGetScript = (script) => {
-            let htmlScript = document.querySelector("body");
-            htmlScript.insertAdjacentElement("afterend", script);
-          };
-          //get the js form to read on click to go back
-          newInclude("./js/form.js");
+          /* START thank you screen not banner */
+let myFunction = () =>{
+            setTimeout(function () {
+              //get file js if to get a new screen
+              const newInclude = (file) => {
+                let script = document.createElement("script");
+                script.src = file;
+                script.defer = true;
+                newGetScript(script);
+              };
+              const newGetScript = (script) => {
+                let htmlScript = document.querySelector("body");
+                htmlScript.insertAdjacentElement("afterend", script);
+              };
+              //get the js form to read on click to go back
+              newInclude("./js/form.js");
 
-          /* START Change the background Image */
-          let arrayImages = [
-            "images/lighthouse.jpg",
-            "images/trail.jpg",
-            "images/trees.jpg",
-            "images/waterfall.jpg",
-            "images/winter.jpg",
-          ];
-          //get images to background with transition
-          let x = 0;
-          let body = document.querySelector("body");
-          let message = `<h1> Thank You! We will contact you shortly within 2-3 business days!</h1><button id="back">Go Back</button><div>Thanks again!</div>`;
-          body.innerHTML = message;
-          //get back button
-          let getBack = document.querySelector("button");
-          /* EVENTS last screen*/
-          getBack.addEventListener("click", () => {
-            console.log("click");
-            location.reload();
-          });
-          let getImage = (x) => {
-            //get a new screen
-            let getImgTransition = document.querySelector("div");
-            getImgTransition.innerHTML =
-              ` <img id="images" src="` +
-              arrayImages[x] +
-              `" alt="a series of landscapes"/>`;
-          };
+              /* START Change the background Image */
+              let arrayImages = [
+                "images/lighthouse.jpg",
+                "images/trail.jpg",
+                "images/trees.jpg",
+                "images/waterfall.jpg",
+                "images/winter.jpg",
+              ];
+              //get images to background with transition
+              let x = 0;
+              let body = document.querySelector("body");
+              let message = `<h1> Thank You! We will contact you shortly within 2-3 business days!</h1><button id="back">Go Back</button><div>Thanks again!</div>`;
+              body.innerHTML = message;
+              //get back button
+              let getBack = document.querySelector("button");
+              /* EVENTS last screen*/
+              getBack.addEventListener("click", () => {
+                console.log("click");
+                location.reload();
+              });
+              let getImage = (x) => {
+                //get a new screen
+                let getImgTransition = document.querySelector("div");
+                getImgTransition.innerHTML =
+                  ` <img id="images" src="` +
+                  arrayImages[x] +
+                  `" alt="a series of landscapes"/>`;
+              };
 
-          //set the first image
-          getImage(x);
-          //start the loop
-          let startImageLoop = () => {
-            setInterval(() => {
-              //if x is equal x + 1 >= 5 is it 0 or x + 1
-              x = x + 1 >= arrayImages.length ? 0 : x + 1;
+              //set the first image
               getImage(x);
-              // body.innerHTML = ;
-            }, 1000);
-          };
-          startImageLoop();
+              //start the loop
+              let startImageLoop = () => {
+                setInterval(() => {
+                  //if x is equal x + 1 >= 5 is it 0 or x + 1
+                  x = x + 1 >= arrayImages.length ? 0 : x + 1;
+                  getImage(x);
+                  // body.innerHTML = ;
+                }, 1000);
+              };
+              startImageLoop();
+            }, 3000);
+            myFunction();
+          }
+
+          /* END thank you screen not banner */
         }
-        /* END thank you screen not banner */
       }
     });
   };
