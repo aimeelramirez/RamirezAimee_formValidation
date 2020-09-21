@@ -272,8 +272,11 @@ window.onload = () => {
   let getSwitch = () =>{
      if (background.style.backgroundImage == getLightMode) {
        darkImage();
+       alert("click on browser on dark mode not on mobile")
      } else {
        lightImage();
+       alert("click on browser on light mode not on mobile");
+
      }
   }
   /* END submitForm */
