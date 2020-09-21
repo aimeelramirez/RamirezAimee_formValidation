@@ -1,6 +1,6 @@
 "use strict";
 window.onload = () => {
-let boolMode = false;
+  let boolMode = false;
   /* All Insructions are in "**" */
   /** 
 "Change the first paragraph to match your theme. 
@@ -30,7 +30,12 @@ let boolMode = false;
   let message = document.getElementById("message");
   message.placeholder = "required for messages longer than 10 characters.";
   /* END ids on input and textarea */
-
+  // ---- For testing purposes ---- //
+  // name.value = "aimee";
+  // email.value = "test@gmail.com";
+  // phone.value = "+1(123)123-1234";
+  // message.value = "required for messages longer than 10 characters.";
+  // ---- For testing purposes ---- //
   // Extra to replace icon on class error on getting success checkmark//
   const include = (file) => {
     let script = document.createElement("script");
@@ -62,7 +67,6 @@ let boolMode = false;
   createButtonSwitch.style.cssText =
     "cursor:pointer; font-size:1.5rem; color:black;";
 
- 
   /* END Change the background Image  dark : light*/
 
   let form = document.querySelector("form");
@@ -96,7 +100,7 @@ let boolMode = false;
       //so this is saying  /^+ numbers 0-9 on {match number length exactly} [-. ] match char. exactly$/
       let regx = /^\+([0-9]{1})\(([0-9]{3})\)([0-9]{3})[-. ]([0-9]{4})$/;
       if (!el.item.match(regx)) {
-        banner.innerHTML = `<p class='error'><i class="fas fa-exclamation-triangle"></i> Sorry, please enter the right phone format</p>`;
+        banner.innerHTML = `<p class='error' style='content:"\\f071";'> Sorry, please enter the right phone format</p>`;
       } else {
         boolPhone = true;
         return el;
@@ -110,16 +114,16 @@ let boolMode = false;
       if (el.item == "") {
         // console.log(`Sorry input can not be empty`);
         if (name.value == el.item) {
-          banner.innerHTML = `<p class='error'><i class="fas fa-exclamation-triangle"></i> Sorry, please enter the right name format</p>`;
+          banner.innerHTML = `<p class='error' style='content:"\\f071";'> Sorry, please enter the right name format</p>`;
           name.focus();
         } else if (email.value == el.item) {
-          banner.innerHTML = `<p class='error'><i class="fas fa-exclamation-triangle"></i> Sorry, please enter the right email format</p>`;
+          banner.innerHTML = `<p class='error' style='content:"\\f071";'> Sorry, please enter the right email format</p>`;
           email.focus();
         } else if (phone.value == el.item) {
-          banner.innerHTML = `<p class='error'><i class="fas fa-exclamation-triangle"></i> Sorry, please enter the right phone format</p>`;
+          banner.innerHTML = `<p class='error' style='content:"\\f071";'> Sorry, please enter the right phone format</p>`;
           phone.focus();
         } else if (message.value == el.item) {
-          banner.innerHTML = `<p class='error'><i class="fas fa-exclamation-triangle"></i> Sorry, please enter the right message format</p>`;
+          banner.innerHTML = `<p class='error' style='content:"\\f071";'> Sorry, please enter the right message format</p>`;
           message.focus();
         }
         return el;
@@ -131,7 +135,7 @@ let boolMode = false;
       let dotpos = emailID.lastIndexOf(".");
 
       if (atpos < 1 || dotpos - atpos < 2) {
-        banner.innerHTML = `<p class='error'><i class="fas fa-exclamation-triangle"></i> Sorry, please enter the right email format</p>`;
+        banner.innerHTML = `<p class='error' style='content:"\\f071";'> Sorry, please enter the right email format</p>`;
         boolEmail = false;
       } else {
         boolEmail = true;
@@ -141,7 +145,7 @@ let boolMode = false;
       let checkNaN = isNaN(el.item);
       // console.log(checkNaN + ":" + el.item);
       if (checkNaN != true) {
-        banner.innerHTML = `<p class='error'><i class="fas fa-exclamation-triangle"></i> Sorry, please enter the right name with letters not numbers format</p>`;
+        banner.innerHTML = `<p class='error' style='content:"\\f071";'> Sorry, please enter the right name with letters not numbers format</p>`;
       } else {
         boolName = true;
 
@@ -153,7 +157,7 @@ let boolMode = false;
         boolMessage = true;
         return el;
       } else {
-        banner.innerHTML = `<p class='error'><i class="fas fa-exclamation-triangle"></i> Sorry, please enter the right message format</p>`;
+        banner.innerHTML = `<p class='error' style='content:"\\f071";'> Sorry, please enter the right message format</p>`;
       }
     };
     //get store to check
@@ -161,6 +165,7 @@ let boolMode = false;
       if (el.item != null && el.id != 4) {
         // console.log(el.id + ":" + el.item);
         //validate all inputs if empty
+
         validateString(el);
         //recheck all inputs for each
         if (el.id == 0) {
@@ -183,7 +188,10 @@ let boolMode = false;
           boolName == true
         ) {
           // on all forms validated = success banner
-          banner.innerHTML = `<p class='error' style="color:green; border: 2px solid green;"><i class="fas fa-check-square" style="color:green;"></i> Success</p>`;
+          banner.setAttribute("class", "error:after");
+          //banner.setAttribute("style", );
+          banner.style.cssText = `color: #006400; content:''; border: 2px solid #006400; display: inline-block; animation: bounce-right 1s;`;
+          banner.innerHTML = `<i class="fas fa-check-square"></i> Success`;
 
           /* START thank you screen not banner */
           let newScreen = () => {
@@ -236,7 +244,7 @@ let boolMode = false;
                 }, 2000);
               };
               startImageLoop();
-            }, 3000);
+            }, 20000);
           };
           newScreen();
           /* END thank you screen not banner */
@@ -244,9 +252,8 @@ let boolMode = false;
       }
     });
   };
-  
-  let getSwitch = () =>{
 
+  let getSwitch = () => {
     //get light image on light mode
     let lightImage = () => {
       boolMode = false;
@@ -285,9 +292,8 @@ let boolMode = false;
       lightImage();
       //alert("click on browser on light mode not on mobile");
     }
-  }
+  };
   /* END submitForm */
- 
 
   /* EVENTS first screen*/
   addEventListener("submit", submitForm);
