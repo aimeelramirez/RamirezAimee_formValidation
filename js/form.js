@@ -13,7 +13,9 @@ window.onload = () => {
   banner.innerHTML = "Get in touch:";
 
   /* QUERIES */
-  let background = document.querySelector("body");
+  let background = document.querySelector("html");
+  let backgroundBody = document.querySelector("body");
+
   let arrayImages = ["css/images/debutlight.png", "css/images/txture.png"];
   let getLightMode = (background.style.backgroundImage =
     `url("` + arrayImages[0] + `")`);
@@ -48,24 +50,35 @@ window.onload = () => {
   /* START creating dark mode or light mode */
   let createButtonSwitch = document.createElement("a");
   background.insertAdjacentElement("beforeend", createButtonSwitch);
-  createButtonSwitch.innerHTML += `<i class="fas fa-moon"> Switch to Dark Mode</i>`;
+  backgroundBody.style.backgroundImage = `url("` + arrayImages[0] + `")`;
+  backgroundBody.style.transition = "2s";
+  background.style.backgroundImage = `url("` + arrayImages[0] + `")`;
+  background.style.transition = "2s";
+  createButtonSwitch.innerHTML += `<i class="fas fa-moon"> </i><p>Switch to Dark Mode</p>`;
   //get light image on light mode
-  createButtonSwitch.style.cssText = "color:black; cursor:pointer;";
+  createButtonSwitch.style.cssText =
+    "color:black; cursor:pointer; font-size:1.5rem;";
 
   let lightImage = () => {
+    backgroundBody.style.backgroundImage = `url("` + arrayImages[0] + `")`;
+    backgroundBody.style.transition = "2s";
     background.style.backgroundImage = `url("` + arrayImages[0] + `")`;
     background.style.transition = "2s";
-    createButtonSwitch.innerHTML = `<i class="fas fa-moon"> Switch to Dark Mode</i>`;
+    createButtonSwitch.innerHTML = `<i class="fas fa-moon"></i><p> Switch to Dark Mode</p>`;
     createButtonSwitch.style.backgroundImage = `url("` + arrayImages[0] + `")`;
-    createButtonSwitch.style.cssText = "color:black; cursor:pointer;";
+    createButtonSwitch.style.cssText =
+      "color:black; cursor:pointer; font-size:1.5rem;";
   };
 
   //get dark image on dark mode
   let darkImage = () => {
+    backgroundBody.style.backgroundImage = `url("` + arrayImages[1] + `")`;
+    backgroundBody.style.transition = "2s";
     background.style.backgroundImage = `url("` + arrayImages[1] + `")`;
     background.style.transition = "2s";
-    createButtonSwitch.innerHTML = `<i class="fas fa-sun"> Switch to Light Mode</i>`;
-    createButtonSwitch.style.cssText = "color:white; cursor:pointer;";
+    createButtonSwitch.innerHTML = `<i class="fas fa-sun"></i><p>Switch to Light Mode</p>`;
+    createButtonSwitch.style.cssText =
+      "color:white; cursor:pointer; font-size:1.5rem;";
     createButtonSwitch.style.transition = "2s";
   };
   /* END Change the background Image  dark : light*/
@@ -146,7 +159,7 @@ window.onload = () => {
     };
     let validateStringNaN = (el) => {
       let checkNaN = isNaN(el.item);
-     // console.log(checkNaN + ":" + el.item);
+      // console.log(checkNaN + ":" + el.item);
       if (checkNaN != true) {
         banner.innerHTML = `<p class='error'><i class="fas fa-exclamation-triangle"></i> Sorry, please enter the right name with letters not numbers format</p>`;
       } else {
@@ -245,7 +258,7 @@ window.onload = () => {
             }, 1000);
           };
           startImageLoop();
-        }    
+        }
         /* END thank you screen not banner */
       }
     });
