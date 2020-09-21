@@ -244,7 +244,7 @@ window.onload = () => {
                 }, 2000);
               };
               startImageLoop();
-            }, 20000);
+            }, 3000);
           };
           newScreen();
           /* END thank you screen not banner */
