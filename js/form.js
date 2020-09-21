@@ -41,7 +41,7 @@ window.onload = () => {
     getScript(script);
   };
   const getScript = (script) => {
-    let htmlScript = document.querySelector("head");
+    let htmlScript = document.querySelector("body");
     htmlScript.insertAdjacentElement("beforeend", script);
   };
   include("https://kit.fontawesome.com/68ebcc4019.js");
@@ -50,17 +50,20 @@ window.onload = () => {
   /* START creating dark mode or light mode */
   let createButtonSwitch = document.createElement("a");
   background.insertAdjacentElement("beforeend", createButtonSwitch);
+  //center buttons and text
+  background.style.cssText = "text-align:center";
+  //on html to match body
   backgroundBody.style.backgroundImage = `url("` + arrayImages[0] + `")`;
   backgroundBody.style.transition = "2s";
-
+  //on html to match body
   background.style.backgroundImage = `url("` + arrayImages[0] + `")`;
   background.style.transition = "2s";
 
   createButtonSwitch.innerHTML += `<i class="fas fa-moon"> </i><p>Switch to Dark Mode</p>`;
-  //get light image on light mode
   createButtonSwitch.style.cssText =
     "cursor:pointer; font-size:1.5rem; color:black;";
 
+  //get light image on light mode
   let lightImage = () => {
     backgroundBody.style.backgroundImage = `url("` + arrayImages[0] + `")`;
     backgroundBody.style.transition = "2s";
@@ -79,6 +82,7 @@ window.onload = () => {
     backgroundBody.style.transition = "2s";
     background.style.backgroundImage = `url("` + arrayImages[1] + `")`;
     background.style.transition = "2s";
+
     createButtonSwitch.innerHTML = `<i class="fas fa-sun"></i><p>Switch to Light Mode</p>`;
     createButtonSwitch.style.cssText =
       "color:white; cursor:pointer; font-size:1.5rem;";
@@ -106,8 +110,8 @@ window.onload = () => {
       // console.log("check: ", store);
     }
     /* END form elements on key to store */
-    // ** Create validation errors for every single input.
 
+    // ** Create validation errors for every single input.
     let boolPhone = false;
     let boolEmail = false;
     let boolName = false;
@@ -153,12 +157,10 @@ window.onload = () => {
 
       if (atpos < 1 || dotpos - atpos < 2) {
         banner.innerHTML = `<p class='error'><i class="fas fa-exclamation-triangle"></i> Sorry, please enter the right email format</p>`;
-        // return false;
         boolEmail = false;
       } else {
         boolEmail = true;
       }
-      // return true;
     };
     let validateStringNaN = (el) => {
       let checkNaN = isNaN(el.item);
@@ -179,11 +181,13 @@ window.onload = () => {
         banner.innerHTML = `<p class='error'><i class="fas fa-exclamation-triangle"></i> Sorry, please enter the right message format</p>`;
       }
     };
+    //get store to check
     store.map((el) => {
       if (el.item != null && el.id != 4) {
         // console.log(el.id + ":" + el.item);
         //validate all inputs if empty
         validateString(el);
+        //recheck all inputs for each
         if (el.id == 0) {
           //check if name is numbers
           validateStringNaN(el);
@@ -197,32 +201,18 @@ window.onload = () => {
           //check message
           validateMessage(el);
         }
-
         if (
           boolMessage == true &&
           boolPhone == true &&
           boolEmail == true &&
           boolName == true
         ) {
+          // on all forms validated = success banner
           banner.innerHTML = `<p class='error' style="color:green; border: 2px solid green;"><i class="fas fa-check-square" style="color:green;"></i> Success</p>`;
 
           /* START thank you screen not banner */
-          let myFunction = () => {
-            setTimeout(function () {
-              //get file js if to get a new screen
-              const newInclude = (file) => {
-                let script = document.createElement("script");
-                script.src = file;
-                script.defer = true;
-                newGetScript(script);
-              };
-              const newGetScript = (script) => {
-                let htmlScript = document.querySelector("body");
-                htmlScript.insertAdjacentElement("afterend", script);
-              };
-              //get the js form to read on click to go back
-              newInclude("./js/form.js");
-
+          let newScreen = () => {
+            setTimeout(() => {
               /* START Change the background Image */
               let arrayImages = [
                 "images/lighthouse.jpg",
@@ -233,40 +223,46 @@ window.onload = () => {
               ];
               //get images to background with transition
               let x = 0;
-              let body = document.querySelector("body");
-              let message = `<h1> Thank You! We will contact you shortly within 2-3 business days!</h1><button id="back">Go Back</button><div>Thanks again!</div>`;
+              let body = document.querySelector("form");
+              body.style.cssText = "text-align:center";
+              let message = `<p><h1> Thank You!<hr/>We will contact you shortly within 2-3 business days!</h1><hr/><i class="fas fa-arrow-circle-left"> Go Back</i><br/> <div>Thanks again!</div></p>`;
               body.innerHTML = message;
               //get back button
-              let getBack = document.querySelector("button");
+              let getBack = document.querySelector("i");
+              getBack.style.cssText =
+                "color:black; cursor:pointer; font-size:1.5rem;";
               /* EVENTS last screen*/
               getBack.addEventListener("click", () => {
                 console.log("click");
                 location.reload();
               });
-              let getImage = (x) => {
-                //get a new screen
-                let getImgTransition = document.querySelector("div");
-                getImgTransition.innerHTML =
-                  ` <img id="images" src="` +
-                  arrayImages[x] +
-                  `" alt="a series of landscapes"/>`;
-              };
+              /* EVENTS last screen*/
 
-              //set the first image
-              getImage(x);
+              //get first image to set to get
+              let getImgTransition = document.querySelector("div");
+              getImgTransition.innerHTML =
+                ` <img id="images" src="` + arrayImages[0] + `"/><br/> Cheers!`;
+
+              let getImage = () => {
+                //get a new screen
+                let getImg = document.getElementById("images");
+                getImg.src = arrayImages[x];
+                x++;
+                //fixing to make it readable
+                if (x >= arrayImages.length) {
+                  x = 0;
+                }
+              };
               //start the loop
               let startImageLoop = () => {
                 setInterval(() => {
-                  //if x is equal x + 1 >= 5 is it 0 or x + 1
-                  x = x + 1 >= arrayImages.length ? 0 : x + 1;
-                  getImage(x);
-                  // body.innerHTML = ;
-                }, 1000);
+                  getImage();
+                }, 2000);
               };
               startImageLoop();
             }, 3000);
           };
-          myFunction();
+          newScreen();
           /* END thank you screen not banner */
         }
       }
@@ -283,4 +279,5 @@ window.onload = () => {
       lightImage();
     }
   });
+  /* EVENTS first screen*/
 };
