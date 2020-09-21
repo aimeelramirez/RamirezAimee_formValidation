@@ -49,9 +49,10 @@ window.onload = () => {
 
   /* START creating dark mode or light mode */
   let createButtonSwitch = document.createElement("a");
-  background.insertAdjacentElement("beforeend", createButtonSwitch);
+  backgroundBody.insertAdjacentElement("beforeend", createButtonSwitch);
   backgroundBody.style.backgroundImage = `url("` + arrayImages[0] + `")`;
   backgroundBody.style.transition = "2s";
+  
   background.style.backgroundImage = `url("` + arrayImages[0] + `")`;
   background.style.transition = "2s";
   createButtonSwitch.innerHTML += `<i class="fas fa-moon"> </i><p>Switch to Dark Mode</p>`;
