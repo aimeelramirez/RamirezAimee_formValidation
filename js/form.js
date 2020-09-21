@@ -1,5 +1,6 @@
 "use strict";
 window.onload = () => {
+let boolMode = false;
   /* All Insructions are in "**" */
   /** 
 "Change the first paragraph to match your theme. 
@@ -17,8 +18,6 @@ window.onload = () => {
   let backgroundBody = document.querySelector("body");
 
   let arrayImages = ["css/images/debutlight.png", "css/images/txture.png"];
-  let getLightMode = (background.style.backgroundImage =
-    `url("` + arrayImages[0] + `")`);
 
   // let getDarkMode = (background.style.backgroundImage =
   //   `url("` + arrayImages[1] + `")`);
@@ -53,41 +52,17 @@ window.onload = () => {
   //center buttons and text
   background.style.cssText = "text-align:center";
   //on html to match body
-  backgroundBody.style.backgroundImage = `url("` + arrayImages[0] + `")`;
+  backgroundBody.style.backgroundImage = `url("css/images/debutlight.png")`;
   backgroundBody.style.transition = "2s";
   //on html to match body
-  background.style.backgroundImage = `url("` + arrayImages[0] + `")`;
+  background.style.backgroundImage = `url("css/images/debutlight.png")`;
   background.style.transition = "2s";
 
   createButtonSwitch.innerHTML += `<i class="fas fa-moon"> </i><p>Switch to Dark Mode</p>`;
   createButtonSwitch.style.cssText =
     "cursor:pointer; font-size:1.5rem; color:black;";
 
-  //get light image on light mode
-  let lightImage = () => {
-    backgroundBody.style.backgroundImage = `url("` + arrayImages[0] + `")`;
-    backgroundBody.style.transition = "2s";
-    background.style.backgroundImage = `url("` + arrayImages[0] + `")`;
-    background.style.transition = "2s";
-
-    createButtonSwitch.innerHTML = `<i class="fas fa-moon"></i><p>Switch to Dark Mode</p>`;
-    createButtonSwitch.style.backgroundImage = `url("` + arrayImages[0] + `")`;
-    createButtonSwitch.style.cssText =
-      "cursor:pointer; font-size:1.5rem; color:black;";
-  };
-
-  //get dark image on dark mode
-  let darkImage = () => {
-    backgroundBody.style.backgroundImage = `url("` + arrayImages[1] + `")`;
-    backgroundBody.style.transition = "2s";
-    background.style.backgroundImage = `url("` + arrayImages[1] + `")`;
-    background.style.transition = "2s";
-
-    createButtonSwitch.innerHTML = `<i class="fas fa-sun"></i><p>Switch to Light Mode</p>`;
-    createButtonSwitch.style.cssText =
-      "color:white; cursor:pointer; font-size:1.5rem;";
-    createButtonSwitch.style.transition = "2s";
-  };
+ 
   /* END Change the background Image  dark : light*/
 
   let form = document.querySelector("form");
@@ -269,18 +244,51 @@ window.onload = () => {
       }
     });
   };
+  
   let getSwitch = () =>{
-     if (background.style.backgroundImage == getLightMode) {
-       darkImage();
-       alert("click on browser on dark mode not on mobile")
-     } else {
-       lightImage();
-       alert("click on browser on light mode not on mobile");
 
-     }
+    //get light image on light mode
+    let lightImage = () => {
+      boolMode = false;
+      backgroundBody.style.backgroundImage = `url("` + arrayImages[0] + `")`;
+      backgroundBody.style.transition = "2s";
+      background.style.backgroundImage = `url("` + arrayImages[0] + `")`;
+      background.style.transition = "2s";
+
+      createButtonSwitch.innerHTML = `<i class="fas fa-moon"></i><p>Switch to Dark Mode</p>`;
+      createButtonSwitch.style.backgroundImage =
+        `url("` + arrayImages[0] + `")`;
+      createButtonSwitch.style.cssText =
+        "cursor:pointer; font-size:1.5rem; color:black;";
+    };
+
+    //get dark image on dark mode
+    let darkImage = () => {
+      boolMode = true;
+      backgroundBody.style.backgroundImage = `url("` + arrayImages[1] + `")`;
+      backgroundBody.style.transition = "2s";
+      background.style.backgroundImage = `url("` + arrayImages[1] + `")`;
+      background.style.transition = "2s";
+
+      createButtonSwitch.innerHTML = `<i class="fas fa-sun"></i><p>Switch to Light Mode</p>`;
+      createButtonSwitch.style.cssText =
+        "color:white; cursor:pointer; font-size:1.5rem;";
+      createButtonSwitch.style.transition = "2s";
+    };
+    if (boolMode == false) {
+      console.log(boolMode);
+      darkImage();
+      //alert("click on browser on dark mode not on mobile");
+    } else {
+      console.log(boolMode);
+
+      lightImage();
+      //alert("click on browser on light mode not on mobile");
+    }
   }
   /* END submitForm */
  
+
   /* EVENTS first screen*/
   addEventListener("submit", submitForm);
   createButtonSwitch.addEventListener("click", getSwitch);
