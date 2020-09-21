@@ -18,7 +18,7 @@ https://alramirez1.github.io/RamirezAimee_formValidation/
 
 ## Video Presentation
 
-![form validation](images/screenshot-contactus.png)
+![form validation](images/screenshot-successbanner.png)
 (https://www.youtube.com/watch?v=0bH8TQtmWOg)
 
 https://www.youtube.com/watch?v=0bH8TQtmWOg
