@@ -100,7 +100,7 @@ window.onload = () => {
       //so this is saying  /^+ numbers 0-9 on {match number length exactly} [-. ] match char. exactly$/
       let regx = /^\+([0-9]{1})\(([0-9]{3})\)([0-9]{3})[-. ]([0-9]{4})$/;
       if (!el.item.match(regx)) {
-        banner.innerHTML = `<p class='error' style='content:"\\f071";'> Sorry, please enter the right phone format</p>`;
+        banner.innerHTML = `<p class='error' style='content:"\\f071";'> Try +1(123)123-1234 to submit the form.</p>`;
       } else {
         boolPhone = true;
         return el;
