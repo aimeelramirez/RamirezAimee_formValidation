@@ -77,24 +77,26 @@ window.onload = () => {
   //let paragraphs = form.querySelectorAll("p");
   let inputValidate = form.querySelectorAll("input");
   let formValidate = form.querySelectorAll("textarea");
-//get the button disabled before submit
- setInterval(() => {
-  for (let i = 0; i < inputValidate.length; i++) {
- if (inputValidate[i].value != "" && formValidate[0].value != "") {
-      // let args = [...inputValidate];
-      // console.log(args[i].value);
-      //hardcoded...
-      if (inputValidate[0].value != "" && inputValidate[1].value != "" && inputValidate[2].value != "") {
-        submitButton.removeAttribute("class", "disabled");
-        boolButton = true;
-
-      }else{
-        submitButton.setAttribute("class", "disabled");
-
+  //get the button disabled before submit
+  setInterval(() => {
+    for (let i = 0; i < inputValidate.length; i++) {
+      if (inputValidate[i].value != "" && formValidate[0].value != "") {
+        // let args = [...inputValidate];
+        // console.log(args[i].value);
+        //hardcoded...
+        if (
+          inputValidate[0].value != "" &&
+          inputValidate[1].value != "" &&
+          inputValidate[2].value != ""
+        ) {
+          submitButton.removeAttribute("class", "disabled");
+          boolButton = true;
+        } else {
+          submitButton.setAttribute("class", "disabled");
+        }
       }
     }
-  }
-},1000);
+  }, 1000);
 
   /* START submitForm */
   const submitForm = (e) => {
