@@ -83,21 +83,23 @@ window.onload = () => {
   setInterval(() => {
     for (let i = 0; i < inputValidate.length; i++) {
       // if (inputValidate[i].value != "" ) {
-        // let args = [...inputValidate];
-        // console.log(args[i].value);
-        //hardcoded...
-        if (
-          inputValidate[0].value != "" &&
-          inputValidate[1].value != "" &&
-          inputValidate[2].value != "" &&
-          formValidate[0].value != ""
-        ) {
-          submitButton.removeAttribute("class", "disabled");
-          boolButton = true;
-        } else {
-          submitButton.setAttribute("class", "disabled");
-        }
+      // let args = [...inputValidate];
+      // console.log(args[i].value);
+      //hardcoded...
+      if (
+        inputValidate[0].value != "" &&
+        inputValidate[1].value != "" &&
+        inputValidate[2].value != "" &&
+        formValidate[0].value != ""
+      ) {
+        submitButton.removeAttribute("class", "disabled");
+        boolButton = true;
+        /* EVENTS on submit button */
+        addEventListener("submit", submitForm);
+      } else {
+        submitButton.setAttribute("class", "disabled");
       }
+    }
     //}
   }, 1000);
 
@@ -340,9 +342,8 @@ window.onload = () => {
     };
     /* END submitForm */
 
-    /* EVENTS first screen*/
-    addEventListener("submit", submitForm);
+    /* EVENTS on switch */
     createButtonSwitch.addEventListener("click", getSwitch);
   };
-  /* EVENTS first screen*/
+  /* EVENTS on switch */
 };
