@@ -80,13 +80,18 @@ window.onload = () => {
 //get the button disabled before submit
  setInterval(() => {
   for (let i = 0; i < inputValidate.length; i++) {
-    // console.log(inputValidate[i].value);
-    if (inputValidate[i].value == "" && formValidate[0].value == "") {
-      submitButton.setAttribute("class", "disabled");
-    } else if (inputValidate[i].value != "" && formValidate[0].value != "") {
-      submitButton.removeAttribute("class", "disabled");
+ if (inputValidate[i].value != "" && formValidate[0].value != "") {
+      // let args = [...inputValidate];
+      // console.log(args[i].value);
+      //hardcoded...
+      if (inputValidate[0].value != "" && inputValidate[1].value != "" && inputValidate[2].value != "") {
+        submitButton.removeAttribute("class", "disabled");
+        boolButton = true;
 
-      boolButton = true;
+      }else{
+        submitButton.setAttribute("class", "disabled");
+
+      }
     }
   }
 },1000);
