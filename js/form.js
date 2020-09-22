@@ -78,16 +78,19 @@ window.onload = () => {
   let inputValidate = form.querySelectorAll("input");
   let formValidate = form.querySelectorAll("textarea");
   //get the button disabled before submit
+  submitButton.setAttribute("class", "disabled");
+
   setInterval(() => {
     for (let i = 0; i < inputValidate.length; i++) {
-      if (inputValidate[i].value != "" && formValidate[0].value != "") {
+      // if (inputValidate[i].value != "" ) {
         // let args = [...inputValidate];
         // console.log(args[i].value);
         //hardcoded...
         if (
           inputValidate[0].value != "" &&
           inputValidate[1].value != "" &&
-          inputValidate[2].value != ""
+          inputValidate[2].value != "" &&
+          formValidate[0].value != ""
         ) {
           submitButton.removeAttribute("class", "disabled");
           boolButton = true;
@@ -95,7 +98,7 @@ window.onload = () => {
           submitButton.setAttribute("class", "disabled");
         }
       }
-    }
+    //}
   }, 1000);
 
   /* START submitForm */
