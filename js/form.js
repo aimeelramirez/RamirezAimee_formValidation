@@ -158,7 +158,8 @@ window.onload = () => {
             email.focus();
           } else if (phone.value == el.item) {
             banner.innerHTML = `<p class='error' style='content:"\\f071";'> Sorry, please enter the right phone format</p>`;
-            document.querySelectorAll("input#phone").focus();
+            phone.focus();
+            // document.querySelectorAll("input#phone").focus();
           } else if (message.value == el.item) {
             banner.innerHTML = `<p class='error' style='content:"\\f071";'> Sorry, please enter the right message format</p>`;
             message.focus();
