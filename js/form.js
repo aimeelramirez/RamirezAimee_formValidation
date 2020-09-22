@@ -98,6 +98,9 @@ window.onload = () => {
         addEventListener("submit", submitForm);
       } else {
         submitButton.setAttribute("class", "disabled");
+        /* EVENTS on submit button */
+        addEventListener("submit", submitForm);
+       // e.preventDefault();
       }
     }
     //}
@@ -133,6 +136,8 @@ window.onload = () => {
         let regx = /^\+([0-9]{1})\(([0-9]{3})\)([0-9]{3})[-. ]([0-9]{4})$/;
         if (!el.item.match(regx)) {
           banner.innerHTML = `<p class='error' style='content:"\\f071";'> Try +1(123)123-1234 to submit the form.</p>`;
+          phone.focus();
+
         } else {
           boolPhone = true;
           return el;
@@ -153,7 +158,7 @@ window.onload = () => {
             email.focus();
           } else if (phone.value == el.item) {
             banner.innerHTML = `<p class='error' style='content:"\\f071";'> Sorry, please enter the right phone format</p>`;
-            phone.focus();
+            document.querySelectorAll("input#phone").focus();
           } else if (message.value == el.item) {
             banner.innerHTML = `<p class='error' style='content:"\\f071";'> Sorry, please enter the right message format</p>`;
             message.focus();
@@ -168,6 +173,7 @@ window.onload = () => {
 
         if (atpos < 1 || dotpos - atpos < 2) {
           banner.innerHTML = `<p class='error' style='content:"\\f071";'> Sorry, please enter the right email format</p>`;
+          email.focus();
           boolEmail = false;
         } else {
           boolEmail = true;
@@ -178,9 +184,9 @@ window.onload = () => {
         // console.log(checkNaN + ":" + el.item);
         if (checkNaN != true) {
           banner.innerHTML = `<p class='error' style='content:"\\f071";'> Sorry, please enter the right name with letters not numbers format</p>`;
+          name.focus();
         } else {
           boolName = true;
-
           return el;
         }
       };
@@ -190,6 +196,7 @@ window.onload = () => {
           return el;
         } else {
           banner.innerHTML = `<p class='error' style='content:"\\f071";'> Sorry, please enter the right message format</p>`;
+          message.focus();
         }
       };
       //get store to check
