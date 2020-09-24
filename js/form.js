@@ -1,6 +1,7 @@
 "use strict";
 window.onload = () => {
   let boolMode = false;
+  
   /* All Insructions are in "**" */
   /** 
 "Change the first paragraph to match your theme. 
@@ -71,6 +72,14 @@ window.onload = () => {
 
   let form = document.querySelector("form");
   //let paragraphs = form.querySelectorAll("p");
+let form1 = document.querySelector("form");
+let submitButton = document.querySelector("button");
+let inputValidate = form1.querySelectorAll("input");
+let formValidate = form1.querySelectorAll("textarea");
+//get the button disabled before submit
+submitButton.setAttribute("class", "disabled");
+       //submitButton.disabled = true;
+
 
   /* START submitForm */
   const submitForm = (e) => {
@@ -309,10 +318,38 @@ window.onload = () => {
     }
   };
   /* END submitForm */
+setInterval(() => {
+  for (let i = 0; i < inputValidate.length; i++) {
+    // if (inputValidate[i].value != "" ) {
+    // let args = [...inputValidate];
+    // console.log(args[i].value);
+    //hardcoded...
+    if (
+      inputValidate[0].value != "" &&
+      inputValidate[1].value != "" &&
+      inputValidate[2].value != "" &&
+      formValidate[0].value != ""
+    ) {
+      submitButton.removeAttribute("class", "disabled");
+      //boolButton = true;
+      //submitButton.disabled = false;
+        /* EVENTS on submit button */
+        addEventListener("submit", submitForm);
+    } else {
+      submitButton.setAttribute("class", "disabled");
 
+      /* EVENTS on submit button */
+      // addEventListener("submit", submitForm);
+      // e.preventDefault();
+    }
+  }
+  //}
+}, 1000);
   /* EVENTS first screen*/
-  addEventListener("submit", submitForm);
+  //addEventListener("submit", submitForm);
+    
   createButtonSwitch.addEventListener("click", getSwitch);
 
   /* EVENTS first screen*/
+  
 };
