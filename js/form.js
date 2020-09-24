@@ -80,6 +80,7 @@ let formValidate = form1.querySelectorAll("textarea");
 submitButton.setAttribute("class", "disabled");
        //submitButton.disabled = true;
 
+submitButton.setAttribute("disabled", true);
 
   /* START submitForm */
   const submitForm = (e) => {
@@ -331,6 +332,8 @@ setInterval(() => {
       formValidate[0].value != ""
     ) {
       submitButton.removeAttribute("class", "disabled");
+      submitButton.removeAttribute("disabled", true);
+
       //boolButton = true;
       //submitButton.disabled = false;
         /* EVENTS on submit button */
